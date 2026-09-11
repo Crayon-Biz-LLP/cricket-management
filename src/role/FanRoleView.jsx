@@ -14,7 +14,7 @@ export default function FanRoleView() {
   return (
     <div>
       {liveMatch && liveInnings && (
-        <div className="fade-up" style={{ display: "flex", alignItems: "center", background: "var(--scorer-card-2)", padding: "10px 16px", borderRadius: "var(--radius-md)", marginBottom: 16, border: "1px solid var(--scorer-accent-glow)" }}>
+        <div className="fade-up" style={{ display: "flex", alignItems: "center", background: "var(--scorer-card-2)", padding: "10px 16px", borderRadius: "var(--radius-md)", marginBottom: 16, border: "1px solid var(--scorer-accent-glow)", flexWrap: "wrap", rowGap: 8 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginRight: 16 }}>
             <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--scorer-accent)", animation: "blink 1.5s infinite" }} />
             <span style={{ fontWeight: 800, color: "var(--scorer-accent)", fontSize: 13, textTransform: "uppercase", letterSpacing: "1px" }}>LIVE</span>
@@ -68,7 +68,7 @@ export default function FanRoleView() {
             </div>
           </div>
           <div className="pill" style={{ marginBottom: 12 }}>{matches[1]?.status || "Scheduled"}</div>
-          <div style={{ display: "flex", gap: 8 }}>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             <button className="btn btn-primary btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Watch match</button>
             <button className="btn btn-outline btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Buy tickets</button>
           </div>
@@ -77,7 +77,7 @@ export default function FanRoleView() {
 
       <div className="card-elevated fade-up stagger-2" style={{ marginTop: 4, padding: "20px 22px" }}>
         <div className="section-title" style={{ marginBottom: 12 }}>Match center · {matches[1]?.homeTeamId || "Home"} vs {matches[1]?.awayTeamId || "Away"}</div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+        <div className="row" style={{ gap: 16 }}>
           <div className="card-ghost" style={{ padding: "14px 16px" }}>
             <div style={{ fontSize: 11.5, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 4 }}>{matches[1]?.date}</div>
             <div style={{ fontWeight: 800, color: "var(--ink)", fontSize: 15, marginBottom: 6 }}>
@@ -98,7 +98,7 @@ export default function FanRoleView() {
             </div>
           </div>
         </div>
-        <div style={{ marginTop: 14, display: "flex", gap: 8 }}>
+        <div style={{ marginTop: 14, display: "flex", gap: 8, flexWrap: "wrap" }}>
           <button className="btn btn-primary btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Live stream</button>
           <button className="btn btn-outline btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Replay</button>
           <button className="btn btn-outline btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Get tickets</button>

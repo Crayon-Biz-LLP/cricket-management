@@ -84,7 +84,7 @@ export default function AuctionView() {
         <p>Real-time player bidding, purse tracking, and squad composition.</p>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 20 }} className="fade-up stagger-1">
+      <div className="flex-2 fade-up stagger-1" style={{ gap: 20 }}>
         {/* Left Col: Current Player */}
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           <div className="card-elevated" style={{ position: "relative", textAlign: "center", padding: "40px 20px", overflow: "hidden", perspective: 1000 }}>
@@ -96,7 +96,7 @@ export default function AuctionView() {
               <h3 style={{ fontSize: 28, fontWeight: 800, color: "var(--ink)", marginBottom: 8 }}>{currentPlayer.name}</h3>
               <div style={{ fontSize: 16, color: "var(--muted)", marginBottom: 16 }}>{currentPlayer.role} · Base Price: ${currentPlayer.basePrice}</div>
               
-              <div style={{ display: "flex", gap: 12, justifyContent: "center", marginBottom: 24 }}>
+              <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginBottom: 24 }}>
                 <div style={{ padding: "8px 12px", background: "var(--surface-3)", borderRadius: 8 }}>
                   <div style={{ fontSize: 11, color: "var(--muted)", textTransform: "uppercase" }}>Bat Avg</div>
                   <div style={{ fontWeight: 700, fontSize: 14 }}>{Math.floor(Math.random()*20 + 20)}.4</div>
@@ -123,7 +123,7 @@ export default function AuctionView() {
               </div>
 
               {isOwner ? (
-                 <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
+                 <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
                    <button className="btn btn-primary" onClick={handleSell} disabled={!highestBidder}>
                      Sell Player
                    </button>
@@ -132,7 +132,7 @@ export default function AuctionView() {
                    </button>
                  </div>
               ) : (
-                 <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
+                 <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
                    <button className="btn btn-primary" onClick={() => handleBid(teams[0]?.slug, (currentBid || currentPlayer.basePrice) + 100)}>
                      Bid +$100
                    </button>

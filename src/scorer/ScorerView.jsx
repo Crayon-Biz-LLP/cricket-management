@@ -153,7 +153,7 @@ export default function ScorerView() {
       )}
 
       {/* Header */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18, paddingBottom: 14, borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18, paddingBottom: 14, borderBottom: "1px solid rgba(255,255,255,0.06)", flexWrap: "wrap", gap: 12 }}>
         <div>
           <div style={{ fontSize: 11, color: "var(--scorer-muted)", letterSpacing: "1.4px", textTransform: "uppercase", fontWeight: 700 }}>
             {league.name} · {match.date} {match.startTime}
@@ -165,7 +165,7 @@ export default function ScorerView() {
             {isLive ? `● Live — Innings ${match.currentInnings}` : isCompleted ? `✓ ${match.result?.winner || "Completed"}` : "Scheduled"}
           </div>
         </div>
-        <div style={{ display: "flex", gap: 8 }}>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           {!isLive && !isCompleted && (
             <button className="btn" style={{ background: "var(--scorer-green)", color: "white", padding: "8px 14px", borderRadius: "var(--radius-sm)", fontWeight: 700, border: "none" }} onClick={handleStartMatch}>
               Start Match
@@ -185,7 +185,7 @@ export default function ScorerView() {
       </div>
 
       {/* Target / Balls Left */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 18 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 18, flexWrap: "wrap", gap: 12 }}>
         <div style={{ textAlign: "left" }}>
           <div style={{ fontSize: 11, color: "var(--scorer-muted)", letterSpacing: "1.2px", textTransform: "uppercase", fontWeight: 700 }}>Target</div>
           <div style={{ fontWeight: 800, fontSize: 22, color: "var(--scorer-accent)", letterSpacing: "-0.02em", marginTop: 2 }}>{innings?.target || "—"}</div>

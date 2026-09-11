@@ -72,14 +72,14 @@ export default function CommsView() {
                 ))}
               </div>
             </div>
-            <div style={{ display: "flex", gap: 8 }}>
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               <button className="btn btn-primary btn-sm" onClick={handleSend}>Send now</button>
               <button className="btn btn-outline btn-sm">Schedule</button>
             </div>
           </div>
 
           <div className="section-title" style={{ marginTop: 20 }}>Recent announcements</div>
-          <div className="card" style={{ marginTop: 14 }}>
+          <div className="card" style={{ marginTop: 14, maxHeight: 360, overflowY: "auto" }}>
             {history.map((a, i) => (
               <div key={i} className="card-ghost" style={{ padding: "12px 14px", marginBottom: 6, borderLeft: `3px solid var(--primary)` }}>
                 <div style={{ fontWeight: 700, color: "var(--ink)", marginBottom: 2 }}>{a.text}</div>
@@ -108,7 +108,7 @@ export default function CommsView() {
             </div>
             <div style={{ marginBottom: 12 }}>
               <div className="text-label" style={{ marginBottom: 8 }}>Round availability</div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+              <div className="grid-2" style={{ gap: 8 }}>
                 {[1, 2, 3, 4].map((n) => (
                   <label key={n} className="toggle" style={{ justifyContent: "flex-start" }}>
                     <div className="toggle-track on" />
@@ -122,7 +122,7 @@ export default function CommsView() {
               <label className="label">Notes</label>
               <textarea className="input textarea" placeholder="Any availability notes…" />
             </div>
-            <div style={{ marginTop: 12, display: "flex", gap: 8 }}>
+            <div style={{ marginTop: 12, display: "flex", gap: 8, flexWrap: "wrap" }}>
               <button className="btn btn-primary btn-sm">Save availability</button>
               <button className="btn btn-outline btn-sm">Reset</button>
             </div>
@@ -148,7 +148,7 @@ export default function CommsView() {
                 </label>
               ))}
             </div>
-            <div style={{ marginTop: 14, display: "flex", gap: 8 }}>
+            <div style={{ marginTop: 14, display: "flex", gap: 8, flexWrap: "wrap" }}>
               <button className="btn btn-primary btn-sm">Send broadcast</button>
               <button className="btn btn-outline btn-sm">Save draft</button>
             </div>

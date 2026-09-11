@@ -32,7 +32,7 @@ export default function PlayersView() {
       </div>
 
       <div className="section-title fade-up stagger-1">Actions</div>
-      <div style={{ display: "flex", gap: 8, marginBottom: 18 }} className="fade-up stagger-2">
+      <div style={{ display: "flex", gap: 8, marginBottom: 18, flexWrap: "wrap" }} className="fade-up stagger-2">
         <button className="btn btn-outline btn-sm" onClick={() => setTab("register")}>Registration</button>
         <button className="btn btn-outline btn-sm" onClick={() => setTab("list")}>Player list</button>
         <button className="btn btn-outline btn-sm" onClick={() => setTab("availability")}>Availability</button>
@@ -114,7 +114,7 @@ export default function PlayersView() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             {filtered.map((p, i) => (
-              <div key={p.id} className="card fade-up stagger-${Math.min(i + 1, 8)}" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 14px" }}>
+              <div key={p.id} className="card fade-up stagger-${Math.min(i + 1, 8)}" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 14px", flexWrap: "wrap", gap: 10 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                   <div className="avatar avatar-sm" style={{ background: "var(--primary)", color: "white", fontSize: 11 }}>
                     {p.name.split(" ").map((w) => w.charAt(0)).join("").slice(0, 2)}
@@ -124,7 +124,7 @@ export default function PlayersView() {
                     <div style={{ fontSize: 12, color: "var(--muted)" }}>{p.team} · {p.role}</div>
                   </div>
                 </div>
-                <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
                   <span className="pill" style={{ background: "var(--surface-3)", color: "var(--muted-2)" }}>#{p.jerseyNumber}</span>
                   <span className="pill" style={{ background: "var(--primary-soft)", color: "var(--primary)" }}>{p.status}</span>
                   <button className="btn btn-outline btn-sm">View</button>
@@ -151,7 +151,7 @@ export default function PlayersView() {
             </div>
             <div style={{ marginBottom: 12 }}>
               <div className="text-label" style={{ marginBottom: 8 }}>Round availability</div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+              <div className="row" style={{ gap: 8 }}>
                 {[1, 2, 3, 4].map((n) => (
                   <label key={n} className="toggle" style={{ justifyContent: "flex-start" }}>
                     <div className="toggle-track on" />
@@ -165,7 +165,7 @@ export default function PlayersView() {
               <label className="label">Notes</label>
               <textarea className="input textarea" placeholder="Any availability notes…" />
             </div>
-            <div style={{ marginTop: 12, display: "flex", gap: 8 }}>
+            <div style={{ marginTop: 12, display: "flex", gap: 8, flexWrap: "wrap" }}>
               <button className="btn btn-primary btn-sm">Save availability</button>
               <button className="btn btn-outline btn-sm">Reset</button>
             </div>

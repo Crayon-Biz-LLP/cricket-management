@@ -40,7 +40,7 @@ export default function SponsorRoleView() {
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {filtered.map((s, i) => (
               <div key={s.id} className="card fade-up stagger-${Math.min(i + 1, 8)}" style={{ padding: "15px 18px", transition: "transform 0.15s ease, box-shadow 0.15s ease" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10, flexWrap: "wrap", gap: 8 }}>
                   <div>
                     <div style={{ fontWeight: 800, color: "var(--ink)", fontSize: 15 }}>{s.name}</div>
                     <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 3 }}>{s.placements?.join(" · ") || "—"}</div>
@@ -63,7 +63,7 @@ export default function SponsorRoleView() {
         <div className="fade-up stagger-2">
           <div className="section-title" style={{ marginBottom: 12 }}>Ad inventory</div>
           <div className="card" style={{ padding: "16px 18px" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+            <div className="row" style={{ gap: 10 }}>
               {[
                 { name: "Overlay", status: "active", price: "$2,400 / season" },
                 { name: "Footer", status: "active", price: "$1,200 / season" },
@@ -73,7 +73,7 @@ export default function SponsorRoleView() {
                 { name: "Storefront", status: "pending", price: "$1,200 / season" },
               ].map((item, i) => (
                 <div key={i} className="card-ghost" style={{ padding: "13px 15px", transition: "transform 0.15s ease, box-shadow 0.15s ease" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 8 }}>
                     <div>
                       <div style={{ fontWeight: 800, color: "var(--ink)" }}>{item.name}</div>
                       <div style={{ fontSize: 11.5, color: "var(--muted)", marginTop: 3 }}>{item.price}</div>
@@ -91,7 +91,7 @@ export default function SponsorRoleView() {
         <div className="fade-up stagger-2">
           <div className="section-title" style={{ marginBottom: 12 }}>Visibility & reporting</div>
           <div className="card-elevated" style={{ padding: "18px 20px" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 16 }}>
+            <div className="stat-grid" style={{ marginBottom: 16 }}>
               {[
                 { label: "Overlay impressions", value: "12.4k", sub: "this season" },
                 { label: "Footer views", value: "8.2k", sub: "this season" },
@@ -105,7 +105,7 @@ export default function SponsorRoleView() {
                 </div>
               ))}
             </div>
-            <div style={{ display: "flex", gap: 8 }}>
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               <button className="btn btn-outline btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Export report</button>
               <button className="btn btn-outline btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Request review</button>
             </div>
@@ -143,7 +143,7 @@ export default function SponsorRoleView() {
               <label className="label">Notes</label>
               <textarea className="input textarea" placeholder="Sponsor notes…" />
             </div>
-            <div style={{ display: "flex", gap: 8, marginTop: 16 }}>
+            <div style={{ display: "flex", gap: 8, marginTop: 16, flexWrap: "wrap" }}>
               <button className="btn btn-primary btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Save</button>
               <button className="btn btn-outline btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Cancel</button>
             </div>

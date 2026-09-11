@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { leagueStore } from "./store/leagueStore";
 import OrgLeagueCard from "./OrgLeagueCard";
 import ActivityFeed from "./ActivityFeed";
+import { Icon } from "./icons";
 
 export default function OrgDashboard({ setView }) {
   const active = leagueStore.getActiveLeague();
@@ -37,7 +38,9 @@ export default function OrgDashboard({ setView }) {
         <div>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
             <div className="section-title" style={{ marginBottom: 0 }}>Active leagues</div>
-            <button className="btn btn-ghost btn-sm" onClick={() => setShowAddLeague(true)}>+ New league</button>
+            <button className="btn btn-ghost btn-sm" onClick={() => setShowAddLeague(true)}>
+              <Icon name="Plus" size={14} /> New league
+            </button>
           </div>
           
           {showAddLeague && (
@@ -47,7 +50,7 @@ export default function OrgDashboard({ setView }) {
                 <label className="label">League name</label>
                 <input className="input" placeholder="e.g. Winter T10 Cup" value={newLeague.name} onChange={e => setNewLeague({...newLeague, name: e.target.value})} autoFocus />
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 14 }}>
+              <div className="row" style={{ marginBottom: 14 }}>
                 <div className="field">
                   <label className="label">Season</label>
                   <input className="input" value={newLeague.season} onChange={e => setNewLeague({...newLeague, season: e.target.value})} />
@@ -78,14 +81,14 @@ export default function OrgDashboard({ setView }) {
         <div>
           <div className="section-title">At a glance · {active?.name}</div>
           <div className="card-elevated">
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 16 }}>
+            <div className="stat-grid stat-grid-tight" style={{ marginBottom: 16 }}>
               {[
                 { label: "Format", value: active?.format || "—", sub: active?.oversPerInnings ? `${active.oversPerInnings} overs` : null },
                 { label: "Teams", value: leagueStore.teams[active?.id]?.length || 0 },
                 { label: "Standings", value: standings[0]?.team || "—", sub: standings[0]?.points ? `${standings[0].points} pts` : null },
                 { label: "Sponsors", value: leagueStore.commerce[active?.id]?.sponsors?.length || 0, sub: "active" },
               ].map((stat, i) => (
-                <div key={i} style={{ padding: "14px 12px", background: "var(--surface-2)", borderRadius: "var(--radius-md)", border: "1px solid var(--line)" }}>
+                <div key={i} className="stat-tile">
                   <div className="text-label" style={{ marginBottom: 4 }}>{stat.label}</div>
                   <div style={{ fontWeight: 800, color: "var(--ink)", fontSize: 17, letterSpacing: "-0.01em", marginBottom: stat.sub ? 2 : 0 }}>{stat.value}</div>
                   {stat.sub && <div style={{ fontSize: 11.5, color: "var(--muted)" }}>{stat.sub}</div>}
@@ -95,9 +98,13 @@ export default function OrgDashboard({ setView }) {
 
             <div className="divider" />
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-              <button className="btn btn-primary" style={{ whiteSpace: "nowrap" }} onClick={() => setView?.("schedule")}>Quick schedule</button>
-              <button className="btn btn-outline" style={{ whiteSpace: "nowrap" }} onClick={() => setView?.("commerce")}>Commerce</button>
+            <div className="row">
+              <button className="btn btn-primary" style={{ whiteSpace: "nowrap" }} onClick={() => setView?.("schedule")}>
+                <Icon name="CalendarDays" size={14} /> Quick schedule
+              </button>
+              <button className="btn btn-outline" style={{ whiteSpace: "nowrap" }} onClick={() => setView?.("commerce")}>
+                <Icon name="Wallet" size={14} /> Commerce
+              </button>
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@ export default function RoleSwitcher({ currentView, setView }) {
   return (
     <select
       className="select"
-      style={{ width: "auto", minWidth: 190 }}
+      style={{ width: "auto", minWidth: 190, maxWidth: "100%" }}
       value={role}
       onChange={(e) => {
         roleStore.setRole(e.target.value);

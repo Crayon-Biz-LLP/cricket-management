@@ -31,7 +31,7 @@ export default function TeamsView() {
       </div>
 
       <div className="section-title fade-up stagger-1">Views</div>
-      <div style={{ display: "flex", gap: 8, marginBottom: 18 }} className="fade-up stagger-2">
+      <div style={{ display: "flex", gap: 8, marginBottom: 18, flexWrap: "wrap" }} className="fade-up stagger-2">
         <button className={`btn ${view === "list" ? "active" : ""}`} onClick={() => setView("list")}>List</button>
         <button className={`btn ${view === "grid" ? "active" : ""}`} onClick={() => setView("grid")}>Grid</button>
         <div style={{ flex: 1 }} />
@@ -50,11 +50,11 @@ export default function TeamsView() {
                 style={{ cursor: "pointer", transition: "border-color 0.16s ease", outline: selected?.slug === t.slug ? "2px solid var(--primary)" : "none", outlineOffset: 2 }}
                 onClick={() => setSelected(t)}
               >
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 14, marginBottom: 10 }}>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 14, marginBottom: 10, flexWrap: "wrap" }}>
                   <div style={{ width: 48, height: 48, borderRadius: 12, overflow: "hidden", background: "var(--surface-2)", boxShadow: "inset 0 0 0 1px var(--line)", flexShrink: 0 }}>
                     <img src={t.logo} alt={t.name} style={{ width: "100%", height: "100%", objectFit: "contain", backgroundColor: "white" }} />
                   </div>
-                  <div style={{ flex: 1 }}>
+                  <div style={{ flex: 1, minWidth: 140 }}>
                     <div style={{ fontWeight: 800, color: "var(--ink)", fontSize: 15, letterSpacing: "-0.02em" }}>{t.name}</div>
                     <div style={{ fontSize: 12.5, color: "var(--muted)" }}>{t.owner} · est. {t.founded}</div>
                   </div>
@@ -67,7 +67,7 @@ export default function TeamsView() {
                   {resultRows.length > 0 && <span style={{ fontSize: 12.5, color: "var(--muted)" }}>Last: <strong style={{ color: "var(--ink)" }}>{resultRows[0].result}</strong></span>}
                 </div>
 
-                <div style={{ marginTop: 10, display: "flex", gap: 8 }}>
+                <div style={{ marginTop: 10, display: "flex", gap: 8, flexWrap: "wrap" }}>
                   <button className="btn btn-outline btn-sm">Squad</button>
                   <button className="btn btn-outline btn-sm">Branding</button>
                   <button className="btn btn-ghost btn-sm">Results</button>
@@ -81,7 +81,7 @@ export default function TeamsView() {
 
       {view === "grid" && (
         <div className="fade-up stagger-3">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
+          <div className="grid-3">
             {teams.map((t, i) => (
               <div key={t.slug} className="card-elevated" style={{ cursor: "pointer", outline: selected?.slug === t.slug ? "2px solid var(--primary)" : "none", outlineOffset: 2 }} onClick={() => setSelected(t)}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
@@ -91,12 +91,12 @@ export default function TeamsView() {
                   <div style={{ fontWeight: 800, color: "var(--ink)", fontSize: 15 }}>{t.name}</div>
                 </div>
                 <div style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 10 }}>{t.owner}</div>
-                <div style={{ display: "flex", gap: 8 }}>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   {t.sponsors.slice(0, 2).map((s) => (
                     <span key={s.id} style={{ fontSize: 11, color: "var(--muted-2)", background: "var(--surface-2)", padding: "3px 7px", borderRadius: "var(--radius-sm)" }}>{s.name}</span>
                   ))}
                 </div>
-                <div style={{ marginTop: 10, display: "flex", gap: 6 }}>
+                <div style={{ marginTop: 10, display: "flex", gap: 6, flexWrap: "wrap" }}>
                   <button className="btn btn-outline btn-sm">Squad</button>
                   <button className="btn btn-ghost btn-sm">Branding</button>
                 </div>
@@ -140,7 +140,7 @@ export default function TeamsView() {
               </div>
 
               <div className="section-title" style={{ marginTop: 18 }}>Squad · {selected.squad?.length || 0} players</div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, marginBottom: 14 }}>
+              <div className="grid-auto-sm" style={{ marginBottom: 14 }}>
                 {(selected.squad || []).slice(0, 8).map((p) => (
                   <div key={p.id} className="card-ghost" style={{ padding: 10, textAlign: "center" }}>
                     <div style={{ width: 32, height: 32, borderRadius: "50%", background: "var(--primary)", color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 11, margin: "0 auto 6px" }}>
@@ -165,7 +165,7 @@ export default function TeamsView() {
                   <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                     {(selected.results || []).slice(0, 4).map((r) => (
                       <div key={r.date} className="card-ghost" style={{ padding: "10px 14px", borderLeft: `3px solid ${r.result.includes("Won") ? "var(--scorer-green)" : "var(--accent)"}` }}>
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 6 }}>
                           <div>
                             <div style={{ fontWeight: 700, color: "var(--ink)" }}>vs {r.opponent}</div>
                             <div style={{ fontSize: 12, color: "var(--muted)" }}>{r.date}</div>
@@ -178,7 +178,7 @@ export default function TeamsView() {
                 </>
               )}
             </div>
-            <div style={{ marginTop: 14, display: "flex", gap: 10 }}>
+            <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
               <button className="btn btn-primary btn-sm">Edit team</button>
               <button className="btn btn-outline btn-sm">Squad management</button>
             </div>

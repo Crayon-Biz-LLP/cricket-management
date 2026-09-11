@@ -64,7 +64,7 @@ export default function JerseyView() {
           </div>
 
           <div className="section-title" style={{ marginTop: 14 }}>Layout</div>
-          <div style={{ display: "flex", gap: 8 }}>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             {["home", "away", "limited"].map((l) => (
               <button
                 key={l}
@@ -85,15 +85,15 @@ export default function JerseyView() {
           </div>
 
           <div className="section-title" style={{ marginTop: 14 }}>Kit colors</div>
-          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-            <div style={{ flex: 1 }}>
+          <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+            <div style={{ flex: 1, minWidth: 120 }}>
               <div className="label">Primary</div>
               <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
                 <span style={{ width: 32, height: 32, borderRadius: "var(--radius-sm)", background: kitColors.primary, border: "1px solid var(--line)", flexShrink: 0 }} />
                 <span style={{ fontSize: 13, color: "var(--ink)", fontWeight: 600 }}>{kitColors.primary}</span>
               </div>
             </div>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, minWidth: 120 }}>
               <div className="label">Accent</div>
               <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
                 <span style={{ width: 32, height: 32, borderRadius: "var(--radius-sm)", background: kitColors.accent, border: "1px solid var(--line)", flexShrink: 0 }} />
@@ -102,7 +102,7 @@ export default function JerseyView() {
             </div>
           </div>
 
-          <div style={{ marginTop: 18, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ marginTop: 18, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10 }}>
             <div>
               <div style={{ fontSize: 11.5, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 4 }}>Price</div>
               <div style={{ fontWeight: 800, color: "var(--accent)", fontSize: 20 }}>$34</div>
@@ -119,7 +119,7 @@ export default function JerseyView() {
         <div className="card-elevated">
           <div className="section-title" style={{ marginBottom: 14 }}>Preview · {selected?.name}</div>
           <div style={{ background: "var(--surface-2)", borderRadius: "var(--radius-lg)", padding: 20, textAlign: "center" }}>
-            <div style={{ width: 220, height: 260, margin: "0 auto", position: "relative", filter: "drop-shadow(0 20px 30px rgba(0,0,0,0.2))", transition: "transform 0.3s ease" }}>
+            <div style={{ width: "100%", maxWidth: 220, height: 260, margin: "0 auto", position: "relative", filter: "drop-shadow(0 20px 30px rgba(0,0,0,0.2))", transition: "transform 0.3s ease" }}>
               <svg viewBox="0 0 200 240" style={{ width: "100%", height: "100%" }}>
                 <path d="M 60 10 Q 100 30 140 10 L 190 50 L 170 90 L 160 80 L 160 230 L 40 230 L 40 80 L 30 90 L 10 50 Z" fill={kitColors.primary} />
                 <path d="M 60 10 Q 100 30 140 10 L 140 25 Q 100 45 60 25 Z" fill={kitColors.accent} />
@@ -139,7 +139,7 @@ export default function JerseyView() {
             <div style={{ display: "flex", flexDirection: "column", gap: 6, maxHeight: 120, overflow: "auto" }}>
               {cart.length === 0 && <div style={{ fontSize: 12.5, color: "var(--muted)" }}>Your jersey cart is empty.</div>}
               {cart.map((item) => (
-                <div key={item.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 10px", background: "var(--surface-2)", borderRadius: "var(--radius-sm)", border: "1px solid var(--line)" }}>
+                <div key={item.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 10px", background: "var(--surface-2)", borderRadius: "var(--radius-sm)", border: "1px solid var(--line)", flexWrap: "wrap", gap: 6 }}>
                   <div style={{ fontWeight: 700, color: "var(--ink)", fontSize: 13 }}>
                     {item.teamId === selected?.slug ? selected?.name : "Jersey"} · #{item.number} {item.name && "/ " + item.name}
                   </div>

@@ -63,7 +63,7 @@ export default function CommerceView() {
       </div>
 
       {/* Revenue Dashboard */}
-      <div className="fade-up stagger-1" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 24, marginTop: 12 }}>
+      <div className="fade-up stagger-1 stat-grid" style={{ marginBottom: 24, marginTop: 12 }}>
         {[
           { label: "Total Revenue", value: "$18,450", color: "var(--scorer-green)" },
           { label: "Sponsors Active", value: commerce.sponsors.length, color: "var(--ink)" },
@@ -91,8 +91,8 @@ export default function CommerceView() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             {sponsorFiltered.map((s, i) => (
-              <div key={s.id} className="card fade-up stagger-${Math.min(i + 1, 8)}" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 16px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+              <div key={s.id} className="card fade-up stagger-${Math.min(i + 1, 8)}" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12, padding: "14px 16px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
                   <div style={{ width: 38, height: 38, borderRadius: "var(--radius-md)", background: "var(--primary)", color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: 13, flexShrink: 0 }}>
                     {s.name.charAt(0)}
                   </div>
@@ -101,7 +101,7 @@ export default function CommerceView() {
                     <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 1 }}>{s.placements?.join(" · ") || "—"}</div>
                   </div>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
                   <span style={{ fontSize: 13, color: "var(--muted)" }}>${s.pricing?.toLocaleString()} / season</span>
                   <span className={`pill ${s.status === "active" ? "chip-active" : s.status === "reserved" ? "chip-live" : "chip-draft"}`}>{s.status}</span>
                   <button className="btn btn-outline btn-sm">Edit</button>
@@ -161,7 +161,7 @@ export default function CommerceView() {
       {tab === "tickets" && (
         <div className="fade-up stagger-2">
           <div className="section-title">Tickets · {league.season}</div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12, marginBottom: 16 }}>
+          <div className="grid-2" style={{ marginBottom: 16 }}>
             {commerce.tickets.map((t, i) => {
               const pct = Math.round((t.sold / t.capacity) * 100);
               return (
@@ -189,7 +189,7 @@ export default function CommerceView() {
               );
             })}
           </div>
-          <div style={{ display: "flex", gap: 10 }}>
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <button className="btn btn-outline">All fixtures</button>
             <button className="btn btn-outline">Gate management</button>
           </div>
@@ -200,7 +200,7 @@ export default function CommerceView() {
         <div className="fade-up stagger-2">
           <div className="section-title">Merchandise & Jersey Storefronts</div>
           <div className="section-title" style={{ marginTop: 14, marginBottom: 0 }}>All merch</div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 16 }}>
+          <div className="grid-auto-md" style={{ marginBottom: 16 }}>
             {merchGrid.map((item, i) => (
               <div key={item.id} className={`card-elevated fade-up stagger-${Math.min(i + 1, 8)}`}>
                 <div style={{ display: "flex", justifyContent: "center", marginBottom: 10 }}>
@@ -235,7 +235,7 @@ export default function CommerceView() {
             <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
               {commerce.cart.length === 0 && <div style={{ fontSize: 12.5, color: "var(--muted)" }}>Your cart is empty.</div>}
               {commerce.cart.map((item) => (
-                <div key={item.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 12px", background: "var(--surface-2)", borderRadius: "var(--radius-md)", border: "1px solid var(--line)" }}>
+                <div key={item.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, padding: "10px 12px", background: "var(--surface-2)", borderRadius: "var(--radius-md)", border: "1px solid var(--line)" }}>
                   <div style={{ fontWeight: 700, color: "var(--ink)", fontSize: 13 }}>
                     {item.teamName} Jersey · #{item.number} {item.name ? "/" + item.name : ""}
                   </div>

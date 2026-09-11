@@ -40,9 +40,9 @@ export default function BroadcasterRoleView() {
       {activeTab === "overlay" && (
         <div className="fade-up stagger-2">
           <div className="card-elevated" style={{ padding: 0, overflow: "hidden", background: settings.bgColor, position: "relative" }}>
-            <div style={{ padding: "12px 16px", background: "rgba(0,0,0,0.4)", borderBottom: "1px solid rgba(255,255,255,0.1)", display: "flex", justifyContent: "space-between", alignItems: "center", zIndex: 10 }}>
+            <div style={{ padding: "12px 16px", background: "rgba(0,0,0,0.4)", borderBottom: "1px solid rgba(255,255,255,0.1)", display: "flex", justifyContent: "space-between", alignItems: "center", zIndex: 10, flexWrap: "wrap", gap: 8 }}>
               <div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "1px" }}>Preview ({settings.layout} layout)</div>
-              <div style={{ display: "flex", gap: 10 }}>
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                 {["default", "minimal", "milestone"].map(l => (
                   <button key={l} className="btn btn-ghost btn-sm" onClick={() => updateSetting("layout", l)} style={{ padding: "4px 8px", fontSize: 11, background: settings.layout === l ? settings.accentColor : "rgba(255,255,255,0.1)", color: "white" }}>
                     {l.charAt(0).toUpperCase() + l.slice(1)}
@@ -107,7 +107,7 @@ export default function BroadcasterRoleView() {
       {activeTab === "outputs" && (
         <div className="fade-up stagger-2">
           <div className="section-title" style={{ marginBottom: 12 }}>Outputs</div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+          <div className="row" style={{ gap: 14 }}>
             <div className="card" style={{ transition: "transform 0.15s ease, box-shadow 0.15s ease" }}>
               <div className="section-title" style={{ marginBottom: 10 }}>Browser source</div>
               <div style={{ padding: "10px 14px", background: "var(--surface-2)", borderRadius: "var(--radius-md)", border: "1px solid var(--line)" }}>
@@ -129,7 +129,7 @@ export default function BroadcasterRoleView() {
             <div className="card" style={{ transition: "transform 0.15s ease, box-shadow 0.15s ease" }}>
               <div className="section-title" style={{ marginBottom: 10 }}>Stream handoff</div>
               <div style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 12 }}>OBS · vMix · third-party production</div>
-              <div style={{ display: "flex", gap: 8 }}>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                 <button className="btn btn-outline btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>RTMP setup</button>
                 <button className="btn btn-outline btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Mux</button>
               </div>
@@ -137,7 +137,7 @@ export default function BroadcasterRoleView() {
             <div className="card" style={{ transition: "transform 0.15s ease, box-shadow 0.15s ease" }}>
               <div className="section-title" style={{ marginBottom: 10 }}>Content exports</div>
               <div style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 12 }}>Post-match assets</div>
-              <div style={{ display: "flex", gap: 8 }}>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                 <button className="btn btn-outline btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Highlights</button>
                 <button className="btn btn-outline btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Reel</button>
                 <button className="btn btn-outline btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Summary</button>
@@ -158,7 +158,7 @@ export default function BroadcasterRoleView() {
               { title: "Reel generated for social", tag: "Reel", color: "var(--accent)" },
             ].map((c, i) => (
               <div key={i} className="card-ghost" style={{ padding: "13px 16px", borderLeft: `3px solid ${c.color}`, transition: "background 0.15s ease, border-left-color 0.15s ease" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
                   <div>
                     <div style={{ fontSize: 11.5, color: "white", background: c.color, padding: "3px 9px", borderRadius: "var(--radius-sm)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.6px", marginRight: 10 }}>
                       {c.tag}

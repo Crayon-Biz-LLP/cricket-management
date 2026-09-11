@@ -97,7 +97,7 @@ export default function PlayerRoleView() {
 
               <div className="card-elevated" style={{ marginTop: 18 }}>
                 <div className="section-title" style={{ marginBottom: 4 }}>Registration status</div>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 14px", background: "var(--primary-soft)", borderRadius: "var(--radius-md)", border: "1px solid rgba(0,32,64,0.18)", transition: "background 0.15s ease" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 14px", background: "var(--primary-soft)", borderRadius: "var(--radius-md)", border: "1px solid rgba(0,32,64,0.18)", transition: "background 0.15s ease", flexWrap: "wrap", gap: 10 }}>
                   <div>
                     <div style={{ fontWeight: 800, color: "var(--ink)" }}>Active · registered</div>
                     <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 2 }}>
@@ -165,7 +165,7 @@ export default function PlayerRoleView() {
                   </select>
                 </div>
                 <div className="section-title" style={{ marginTop: 8, marginBottom: 8 }}>Rounds</div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }}>
+                <div className="row-3">
                   {[1, 2, 3, 4].map((n) => (
                     <label key={n} className="toggle" style={{ justifyContent: "flex-start" }}>
                       <div className="toggle-track on" />
@@ -184,7 +184,7 @@ export default function PlayerRoleView() {
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 {leagueStore.matches[league.id]?.map((m, i) => (
                   <div key={m.id} className={`card fade-up stagger-${Math.min(i + 1, 8)}`} style={{ transition: "transform 0.15s ease, box-shadow 0.15s ease" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 10 }}>
                       <div>
                         <div style={{ fontSize: 11.5, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 4 }}>{m.date}</div>
                         <div style={{ fontWeight: 800, color: "var(--ink)" }}>

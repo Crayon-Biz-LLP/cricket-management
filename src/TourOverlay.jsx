@@ -51,37 +51,40 @@ export default function TourOverlay({ step, setStep, close, setView, onRoleChang
   return (
     <div style={{
       position: "fixed",
-      bottom: 24,
+      bottom: "max(16px, env(safe-area-inset-bottom))",
       left: "50%",
       transform: "translateX(-50%)",
-      width: "100%",
+      width: "calc(100% - 24px)",
       maxWidth: 580,
+      maxHeight: "calc(100vh - 32px)",
+      overflowY: "auto",
       zIndex: 9999,
       background: "white",
       borderRadius: "var(--radius-xl)",
       boxShadow: "0 30px 80px -20px rgba(10,15,25,0.55)",
-      padding: "22px 26px",
+      padding: "20px 22px",
       border: "1px solid var(--line)",
+      boxSizing: "border-box",
     }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, flexWrap: "wrap", gap: 8 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--primary)" }} />
+          <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--primary)", flexShrink: 0 }} />
           <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: "1.6px", textTransform: "uppercase", color: "var(--primary)" }}>
             Demo Walkthrough
           </div>
         </div>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <div style={{ fontSize: 12, color: "var(--muted)", fontWeight: 600 }}>
+          <div style={{ fontSize: 12, color: "var(--muted)", fontWeight: 600, whiteSpace: "nowrap" }}>
             {step + 1} / {TOUR_STEPS.length}
           </div>
-          <div style={{ width: 120, height: 5, background: "var(--surface-3)", borderRadius: 3, overflow: "hidden" }}>
+          <div style={{ width: 90, maxWidth: "30vw", height: 5, background: "var(--surface-3)", borderRadius: 3, overflow: "hidden" }}>
             <div style={{ width: `${progress}%`, height: "100%", background: "var(--primary)", borderRadius: 3 }} />
           </div>
         </div>
       </div>
 
-      <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-        <div style={{ flex: 1 }}>
+      <div style={{ display: "flex", gap: 14, alignItems: "flex-start", flexWrap: "wrap" }}>
+        <div style={{ flex: "1 1 220px", minWidth: 0 }}>
           <h3 style={{ fontSize: 18, fontWeight: 800, color: "var(--ink)", marginBottom: 4, letterSpacing: "-0.02em" }}>
             {current.title}
           </h3>
@@ -89,11 +92,10 @@ export default function TourOverlay({ step, setStep, close, setView, onRoleChang
             {current.body}
           </p>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 8, justifyContent: "flex-start" }}>
+        <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: 8, justifyContent: "flex-start", alignItems: "center", width: "100%" }}>
           <button className="btn btn-primary" onClick={goNext} style={{ background: "var(--primary)" }}>
             {step === TOUR_STEPS.length - 1 ? "Finish" : "Next"}
           </button>
-          <div style={{ display: "flex", gap: 8 }}>
              {step > 0 && (
                <button className="btn btn-ghost btn-sm" onClick={goPrev}>
                  Prev
@@ -102,7 +104,6 @@ export default function TourOverlay({ step, setStep, close, setView, onRoleChang
              <button className="btn btn-ghost btn-sm" onClick={close}>
                Exit Tour
              </button>
-          </div>
         </div>
       </div>
     </div>

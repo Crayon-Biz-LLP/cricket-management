@@ -66,7 +66,7 @@ export default function CaptainRoleView() {
               <div className="grid-2">
                 <div className="card">
                   <div className="section-title" style={{ marginBottom: 4 }}>Today · {activeMatch?.date || "—"}</div>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12, flexWrap: "wrap", gap: 10 }}>
                     <div>
                       <div style={{ fontSize: 11.5, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 4 }}>{activeMatch?.date}</div>
                       <div style={{ fontWeight: 800, color: "var(--ink)", fontSize: 17 }}>
@@ -104,7 +104,7 @@ export default function CaptainRoleView() {
 
               <div className="card-elevated" style={{ marginTop: 18 }}>
                 <div className="section-title" style={{ marginBottom: 4 }}>Toss</div>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10 }}>
                   <div>
                     <div style={{ fontSize: 11.5, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 4 }}>Toss winner</div>
                     <div style={{ fontWeight: 700, color: "var(--ink)" }}>{team.name}</div>
@@ -119,7 +119,7 @@ export default function CaptainRoleView() {
             <div className="fade-up stagger-2">
               <div className="section-title" style={{ marginBottom: 10 }}>Playing XI · {team.name}</div>
               <div className="card">
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 14 }}>
+                <div className="row" style={{ marginBottom: 14 }}>
                   {Object.entries(lineup).map(([key, val]) => (
                     <div key={key} className="card-ghost" style={{ padding: "12px 14px", transition: "background 0.15s ease, box-shadow 0.15s ease" }}>
                       <div style={{ fontSize: 11.5, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 6 }}>
@@ -137,7 +137,7 @@ export default function CaptainRoleView() {
                     </div>
                   ))}
                 </div>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 12, borderTop: "1px solid var(--line)" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 12, borderTop: "1px solid var(--line)", flexWrap: "wrap", gap: 10 }}>
                   <button className="btn btn-outline" onClick={() => setSubmitted(false)} style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Edit XI</button>
                   <button className={`btn ${submitted ? "btn-outline" : "btn-accent"}`} onClick={() => setSubmitted(true)} style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>
                     {submitted ? "Submitted · Locked" : "Submit playing XI"}
@@ -170,7 +170,7 @@ export default function CaptainRoleView() {
                   </select>
                 </div>
                 <div className="section-title" style={{ marginTop: 8, marginBottom: 8 }}>Rounds</div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+                <div className="row">
                   {[1, 2, 3, 4].map((n) => (
                     <label key={n} className="toggle" style={{ justifyContent: "flex-start" }}>
                       <div className="toggle-track on" />
@@ -181,7 +181,7 @@ export default function CaptainRoleView() {
                 </div>
                 <div style={{ marginTop: 16 }}>
                   <div className="text-label" style={{ marginBottom: 8 }}>Individual matches</div>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+                  <div className="row">
                     {matches.slice(0, 4).map((m) => (
                       <label key={m.id} className="toggle" style={{ justifyContent: "flex-start", padding: "6px 0" }}>
                         <div className="toggle-track on" />
@@ -199,7 +199,7 @@ export default function CaptainRoleView() {
             <div className="fade-up stagger-2">
               <div className="section-title" style={{ marginBottom: 10 }}>Team comms</div>
               <div className="card">
-                <div style={{ display: "flex", gap: 8, marginBottom: 14 }} className="row">
+                <div style={{ marginBottom: 14 }}>
                   <div style={{ flex: 1 }}>
                     <label className="label">Message view</label>
                     <select className="select" value={commsView} onChange={(e) => setCommsView(e.target.value)}>
@@ -251,7 +251,7 @@ export default function CaptainRoleView() {
                           { from: "D. Okafor", message: "Cool, I am ready.", time: "12:04" },
                         ].map((c) => (
                           <div key={c.time} className="card-ghost" style={{ padding: "10px 12px" }}>
-                            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 6 }}>
                               <span style={{ fontWeight: 700, color: "var(--ink)" }}>{c.from}</span>
                               <span style={{ fontSize: 11, color: "var(--muted)" }}>{c.time}</span>
                             </div>

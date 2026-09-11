@@ -1,0 +1,68 @@
+import React from "react";
+import {
+  Home,
+  Gavel,
+  MapPin,
+  CalendarDays,
+  Users,
+  Shirt,
+  User,
+  ClipboardList,
+  Trophy,
+  MonitorPlay,
+  Newspaper,
+  Wallet,
+  MessageCircle,
+  Crown,
+  Shield,
+  Megaphone,
+  Radio,
+  Handshake,
+  Menu,
+  X,
+  Plus,
+  Search,
+  ArrowLeftRight,
+  ChevronRight,
+  ChevronDown,
+  Sparkles,
+  Layers,
+  Timer,
+} from "lucide-react";
+
+export const ICONS = {
+  Home,
+  Gavel,
+  MapPin,
+  CalendarDays,
+  Users,
+  Shirt,
+  User,
+  ClipboardList,
+  Trophy,
+  MonitorPlay,
+  Newspaper,
+  Wallet,
+  MessageCircle,
+  Crown,
+  Shield,
+  Megaphone,
+  Radio,
+  Handshake,
+  Menu,
+  X,
+  Plus,
+  Search,
+  ArrowLeftRight,
+  ChevronRight,
+  ChevronDown,
+  Sparkles,
+  Layers,
+  Timer,
+};
+
+export function Icon({ name, size = 16, strokeWidth = 2, style, ...rest }) {
+  const Cmp = ICONS[name];
+  if (!Cmp) return null;
+  return <Cmp size={size} strokeWidth={strokeWidth} style={{ flexShrink: 0, ...style }} {...rest} />;
+}

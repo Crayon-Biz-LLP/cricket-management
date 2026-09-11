@@ -64,7 +64,7 @@ export default function ContentView() {
               {typedSummary}
               {regenerate && <span style={{ display: "inline-block", width: 8, height: 16, background: "var(--accent)", marginLeft: 4, animation: "blink 1s step-end infinite" }} />}
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginBottom: 18 }}>
+            <div className="stat-grid" style={{ marginBottom: 18 }}>
               {[
                 { label: "Result", value: "NY X Factor won by 5 runs", color: "var(--accent)" },
                 { label: "Player of the Match", value: "S. Carter — NY X Factor", color: "var(--primary)" },
@@ -106,7 +106,7 @@ export default function ContentView() {
         {tab === "highlights" && (
           <div>
             <div className="section-title">Highlights & Key Moments</div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 14 }}>
+            <div className="grid-auto-md" style={{ marginTop: 14 }}>
               {highlights.map((h, i) => (
                 <div key={i} className="card-ghost" style={{ padding: 0, overflow: "hidden", display: "flex", flexDirection: "column" }}>
                   <div style={{ height: 120, background: "var(--surface-3)", position: "relative", display: "flex", alignItems: "center", justifyContent: "center", backgroundImage: "url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>

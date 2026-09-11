@@ -29,7 +29,7 @@ export default function AdminView({ league, franchises, sponsors, venues, upcomi
         {activeTab === "setup" && (
           <div className="fade-up">
             <div className="section-title">Season Configuration</div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, marginBottom: 22 }}>
+            <div className="grid-3" style={{ marginBottom: 22 }}>
               <div className="card-ghost" style={{ padding: 16, textAlign: "center" }}>
                 <div className="pill" style={{ marginBottom: 8 }}>Format</div>
                 <div style={{ fontWeight: 800, fontSize: 28, color: "var(--ink)", letterSpacing: "-0.03em" }}>{league.format}</div>
@@ -50,7 +50,7 @@ export default function AdminView({ league, franchises, sponsors, venues, upcomi
             <div className="section-title">Active Seasons</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 18 }}>
               {seasons.map((s) => (
-                <div key={s} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 16px", background: "var(--surface-2)", borderRadius: "var(--radius-md)", border: "1px solid var(--line)", transition: "background 0.15s ease" }}>
+                <div key={s} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 16px", background: "var(--surface-2)", borderRadius: "var(--radius-md)", border: "1px solid var(--line)", transition: "background 0.15s ease", flexWrap: "wrap", gap: 8 }}>
                   <div style={{ fontWeight: 700, color: "var(--ink)" }}>{s}</div>
                   <div style={{ fontSize: 12.5, color: "var(--muted)" }}>Season config · T20</div>
                 </div>
@@ -58,9 +58,9 @@ export default function AdminView({ league, franchises, sponsors, venues, upcomi
             </div>
 
             <div className="section-title">Create New League</div>
-            <div style={{ display: "flex", gap: 10, marginBottom: 12 }}>
+            <div style={{ display: "flex", gap: 10, marginBottom: 12, flexWrap: "wrap" }}>
               <input
-                style={{ flex: 1, padding: "11px 14px", borderRadius: "var(--radius-md)", border: "1px solid var(--line)", fontSize: 14, outline: "none", background: "var(--surface)", color: "var(--ink)", transition: "border-color 0.16s ease, box-shadow 0.16s ease" }}
+                style={{ flex: 1, minWidth: 200, padding: "11px 14px", borderRadius: "var(--radius-md)", border: "1px solid var(--line)", fontSize: 14, outline: "none", background: "var(--surface)", color: "var(--ink)", transition: "border-color 0.16s ease, box-shadow 0.16s ease" }}
                 placeholder="League name, e.g. West Region T20 Cup"
                 value={newLeagueName}
                 onChange={(e) => setNewLeagueName(e.target.value)}
@@ -82,7 +82,7 @@ export default function AdminView({ league, franchises, sponsors, venues, upcomi
             <div className="section-title">Grounds & Resource Scheduling</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {venues.map((v) => (
-                <div key={v.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 16px", background: "var(--surface-2)", borderRadius: "var(--radius-md)", border: "1px solid var(--line)", transition: "background 0.15s ease" }}>
+                <div key={v.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 16px", background: "var(--surface-2)", borderRadius: "var(--radius-md)", border: "1px solid var(--line)", transition: "background 0.15s ease", flexWrap: "wrap", gap: 10 }}>
                   <div>
                     <div style={{ fontWeight: 700, color: "var(--ink)", marginBottom: 2 }}>{v.name}</div>
                     <div style={{ fontSize: 13, color: "var(--muted)" }}>{v.city}</div>
@@ -102,7 +102,7 @@ export default function AdminView({ league, franchises, sponsors, venues, upcomi
             <div className="section-title">Fixtures · Round 1</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {upcomingFixtures.map((m) => (
-                <div key={m.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 16px", background: "var(--surface-2)", borderRadius: "var(--radius-md)", border: "1px solid var(--line)", transition: "background 0.15s ease" }}>
+                <div key={m.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 16px", background: "var(--surface-2)", borderRadius: "var(--radius-md)", border: "1px solid var(--line)", transition: "background 0.15s ease", flexWrap: "wrap", gap: 10 }}>
                   <div>
                     <div className="pill" style={{ marginBottom: 6 }}>{m.stage}</div>
                     <div style={{ fontWeight: 800, color: "var(--ink)", fontSize: 16, letterSpacing: "-0.01em" }}>
@@ -122,7 +122,7 @@ export default function AdminView({ league, franchises, sponsors, venues, upcomi
         {activeTab === "standings" && (
           <div className="fade-up">
             <div className="section-title">Standings</div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginTop: 4 }}>
+            <div className="stat-grid" style={{ marginTop: 4 }}>
               {standings.slice(0, 4).map((t, i) => (
                 <div key={t.team} className={`card-ghost fade-up stagger-${i + 1}`} style={{ padding: 16, textAlign: "center", background: i < 2 ? "var(--primary-tint)" : "var(--surface-2)", borderColor: i < 2 ? "rgba(0,32,64,0.18)" : "var(--line)" }}>
                   <div style={{ fontSize: 11, color: i < 2 ? "var(--primary)" : "var(--muted)", textTransform: "uppercase", letterSpacing: "1px", fontWeight: 700 }}>#{t.rank}</div>
@@ -138,7 +138,7 @@ export default function AdminView({ league, franchises, sponsors, venues, upcomi
                 </div>
               ))}
             </div>
-            <div style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 12, paddingTop: 12, borderTop: "1px solid var(--line)" }}>
+            <div style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 12, paddingTop: 12, borderTop: "1px solid var(--line)", flexWrap: "wrap" }}>
               {standings.slice(4, 8).map((t, i) => (
                 <div key={t.team} style={{ textAlign: "center", padding: "6px 4px" }} className={`fade-up stagger-${i + 5}`}>
                   <div style={{ fontSize: 11, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "1px", fontWeight: 700 }}>#{t.rank}</div>

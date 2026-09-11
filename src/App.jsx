@@ -24,6 +24,7 @@ import FanRoleView from "./role/FanRoleView";
 import BroadcasterRoleView from "./role/BroadcasterRoleView";
 import SponsorRoleView from "./role/SponsorRoleView";
 import TourOverlay from "./TourOverlay";
+import { Icon } from "./icons";
 
 const ROLE_VIEW_MAP = {
   "league-owner": {
@@ -178,15 +179,15 @@ export default function App() {
       <TopBar view={viewFromRole} setView={setView} onBackToSelection={handleBackToSelection} onRoleChange={handleRoleChange} />
       <main>
         {renderModule()}
-        <div style={{ position: "fixed", bottom: 20, right: 24, display: "flex", gap: 10, zIndex: 10000 }}>
+        <div style={{ position: "fixed", bottom: 16, right: 16, left: 16, display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "flex-end", zIndex: 10000, pointerEvents: "none" }}>
           {tourStep === -1 && (
-            <button className="btn btn-primary btn-sm" onClick={() => setTourStep(0)}>
-              Start Demo Tour
+            <button className="btn btn-primary btn-sm" style={{ gap: 6, pointerEvents: "auto", boxShadow: "var(--shadow-md)" }} onClick={() => setTourStep(0)}>
+              <Icon name="Sparkles" size={14} /> Start Demo Tour
             </button>
           )}
           {role !== "league-owner" && (
-            <button className="btn btn-outline btn-sm" onClick={() => { roleStore.setRole("league-owner"); handleRoleChange(); }}>
-              Switch to league owner
+            <button className="btn btn-outline btn-sm" style={{ gap: 6, pointerEvents: "auto", background: "var(--surface)", boxShadow: "var(--shadow-md)" }} onClick={() => { roleStore.setRole("league-owner"); handleRoleChange(); }}>
+              <Icon name="Crown" size={14} /> Switch to league owner
             </button>
           )}
         </div>

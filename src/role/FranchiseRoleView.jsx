@@ -30,7 +30,7 @@ const FranchiseRoleView = () => {
       return selected ? (
         <div className="grid-2 fade-up stagger-2">
           <div className="card">
-            <div style={{ display: "flex", gap: 14, alignItems: "flex-start", marginBottom: 16 }}>
+            <div style={{ display: "flex", gap: 14, alignItems: "flex-start", marginBottom: 16, flexWrap: "wrap" }}>
               <div style={{ width: 58, height: 58, borderRadius: 13, overflow: "hidden", background: "var(--surface-2)", boxShadow: "inset 0 0 0 1px var(--line)", flexShrink: 0 }}>
                 <img src={selected.logo} alt={selected.name} style={{ width: "100%", height: "100%", objectFit: "contain", backgroundColor: "white" }} />
               </div>
@@ -41,7 +41,7 @@ const FranchiseRoleView = () => {
             </div>
 
             <div className="section-title" style={{ marginTop: 18, marginBottom: 10 }}>Key stats</div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
+            <div className="stat-grid">
               {[
                 { label: "Squad", value: selected.squad?.length || 0 },
                 { label: "Sponsors", value: selected.sponsors?.length || 0 },
@@ -95,11 +95,11 @@ const FranchiseRoleView = () => {
       return (
         <div className="fade-up stagger-2">
           <div className="section-title" style={{ marginBottom: 10 }}>Squad · {selected.name}</div>
-          <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+          <div style={{ display: "flex", gap: 8, marginBottom: 16, flexWrap: "wrap" }}>
             <button className="btn btn-primary btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Add player</button>
             <button className="btn btn-outline btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Lock roster</button>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10 }}>
+          <div className="grid-auto-sm">
             {(selected.squad || []).map((p) => (
               <div key={p.id} className="card-ghost" style={{ padding: "11px 8px", textAlign: "center", transition: "transform 0.15s ease, box-shadow 0.15s ease" }}>
                 <div style={{ width: 36, height: 36, borderRadius: "50%", background: "var(--primary)", color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 11, margin: "0 auto 7px" }}>
@@ -142,7 +142,7 @@ const FranchiseRoleView = () => {
                 </div>
               </div>
             </div>
-            <div style={{ display: "flex", gap: 8, marginTop: 14 }}>
+            <div style={{ display: "flex", gap: 8, marginTop: 14, flexWrap: "wrap" }}>
               <button className="btn btn-outline btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Edit colors</button>
               <button className="btn btn-outline btn-sm" style={{ transition: "background 0.15s ease, border-color 0.15s ease" }}>Upload logo</button>
               <button className="btn btn-ghost btn-sm" style={{ transition: "background 0.15s ease" }}>Preview microsite</button>
@@ -158,7 +158,7 @@ const FranchiseRoleView = () => {
           <div className="section-title" style={{ marginBottom: 10 }}>Franchise sponsors</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             {(selected.sponsors || []).map((s) => (
-              <div key={s.id} className="card-ghost" style={{ padding: "11px 14px", display: "flex", justifyContent: "space-between", alignItems: "center", transition: "background 0.15s ease, border-color 0.15s ease" }}>
+              <div key={s.id} className="card-ghost" style={{ padding: "11px 14px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, transition: "background 0.15s ease, border-color 0.15s ease" }}>
                 <div>
                   <div style={{ fontWeight: 800, color: "var(--ink)" }}>{s.name}</div>
                   <div style={{ fontSize: 12, color: "var(--muted)" }}>Tier: {s.tier}</div>
@@ -225,7 +225,7 @@ const FranchiseRoleView = () => {
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {resultRows.map((r) => (
                 <div key={r.date} className="card" style={{ borderLeft: `3px solid ${r.result.includes("Won") ? "var(--scorer-green)" : "var(--accent)"}`, transition: "transform 0.15s ease, box-shadow 0.15s ease" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
                     <div>
                       <div style={{ fontWeight: 800, color: "var(--ink)" }}>vs {r.opponent}</div>
                       <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 2 }}>{r.score} · {r.date}</div>

@@ -172,7 +172,7 @@ export default function ScheduleView() {
               <div style={{ fontSize: 11.5, color: "var(--muted)", letterSpacing: "0.8px", textTransform: "uppercase", fontWeight: 700 }}>
                 {new Date(selectedDay).toLocaleDateString(undefined, { weekday: "long" })} · {new Date(selectedDay).toLocaleDateString()}
               </div>
-              <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
+              <div style={{ display: "flex", gap: 8, marginTop: 10, flexWrap: "wrap" }}>
                 {weekDates.map((d) => (
                   <button
                     key={d}
@@ -194,14 +194,14 @@ export default function ScheduleView() {
               <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 16 }}>
                 {slotsForDate(selectedDay).slots.map((s) => (
                   <div key={s.id} className="card" style={{ borderLeft: `3px solid ${s.status === "open" ? "var(--scorer-green)" : s.status === "booked" ? "var(--accent)" : "var(--muted-2)"}` }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6, flexWrap: "wrap", gap: 6 }}>
                       <div style={{ fontWeight: 700, color: "var(--ink)" }}>{formatTime(s.startTime)} — {formatTime(s.endTime)}</div>
                       <span className="pill" style={{ background: `${s.status === "open" ? "var(--scorer-green)" : s.status === "booked" ? "var(--accent)" : "var(--muted-2)"}18`, color: s.status === "open" ? "var(--scorer-green)" : s.status === "booked" ? "var(--accent)" : "var(--muted-2)" }}>
                         {s.status}
                       </span>
                     </div>
                     <div style={{ fontSize: 12.5, color: "var(--muted)" }}>{venueName(s.venueId)}</div>
-                    <div style={{ marginTop: 6, display: "flex", gap: 6 }}>
+                    <div style={{ marginTop: 6, display: "flex", gap: 6, flexWrap: "wrap" }}>
                       {s.status === "open" && (
                         <>
                           <button className="btn btn-primary btn-sm">Assign match</button>
@@ -228,7 +228,7 @@ export default function ScheduleView() {
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {slots.map((s) => (
                 <div key={s.id} className="card" style={{ borderLeft: `3px solid ${s.status === "open" ? "var(--scorer-green)" : s.status === "booked" ? "var(--accent)" : "var(--muted-2)"}` }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6, flexWrap: "wrap", gap: 6 }}>
                     <div style={{ fontWeight: 700, color: "var(--ink)" }}>
                       {s.date} · {formatTime(s.startTime)} — {formatTime(s.endTime)}
                     </div>
@@ -237,7 +237,7 @@ export default function ScheduleView() {
                     </span>
                   </div>
                   <div style={{ fontSize: 12.5, color: "var(--muted)" }}>{venueName(s.venueId)}</div>
-                  <div style={{ marginTop: 6, display: "flex", gap: 6 }}>
+                  <div style={{ marginTop: 6, display: "flex", gap: 6, flexWrap: "wrap" }}>
                     {s.status === "open" && (
                       <>
                         <button className="btn btn-primary btn-sm">Assign match</button>
@@ -256,7 +256,7 @@ export default function ScheduleView() {
         {view === "grid" && (
           <div className="fade-up stagger-4">
             <div className="section-title">Grid · {league.name}</div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
+            <div className="grid-4">
               {slots.map((s, i) => (
                 <div key={s.id} className="card-elevated fade-up stagger-${Math.min(i + 1, 8)}" style={{ borderLeft: `4px solid ${s.status === "open" ? "var(--scorer-green)" : s.status === "booked" ? "var(--accent)" : "var(--muted-2)"}` }}>
                   <div style={{ fontSize: 11.5, color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 4 }}>{new Date(s.date).toLocaleDateString(undefined, { month: "short", day: "numeric" })}</div>
