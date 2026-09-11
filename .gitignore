@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+
+# Pitch deck (kept out of repo/deploy)
+**/Cricket League Management Platform.pdf
+
+# Unused local clutter
+test-error.js
+page0_img8.png
+page0_img9.png
+league-theme.json
+usa_thumb.jpg
